@@ -91,7 +91,9 @@ class AuthServiceTest {
     @Test
     void login_succeedsWithCorrectPassword() {
         User user = new User();
+        user.setId("user_123");
         user.setEmail("raj@x.com");
+        user.setName("Raj Kumar");
         user.setRole("customer");
         user.setActive(true);
         user.setPasswordHash(passwordEncoder.encode("password123"));
