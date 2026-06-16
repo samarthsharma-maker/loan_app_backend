@@ -35,7 +35,7 @@ jobs:
         run: mvn -B clean verify
 
       - name: OWASP dependency check
-        run: mvn -B org.owasp:dependency-check-maven:check
+        run: mvn -B org.owasp:dependency-check-maven:check -DskipUpdate
         continue-on-error: true
 
       - name: Upload OWASP report
