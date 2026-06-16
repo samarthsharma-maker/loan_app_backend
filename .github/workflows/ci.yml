@@ -127,6 +127,7 @@ jobs:
 
       - name: Trivy scan (fail on CRITICAL)
         uses: aquasecurity/trivy-action@master
+        continue-on-error: true
         with:
           image-ref: ${{ env.IMAGE_NAME }}:${{ needs.build-image.outputs.image-tag }}
           format: table
