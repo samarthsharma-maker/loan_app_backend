@@ -33,7 +33,11 @@ public class CorsConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(Arrays.asList(allowedOrigins));
+        if (allowedOrigins.length == 1 && "*".equals(allowedOrigins[0])) {
+            config.setAllowedOriginPatterns("*");
+        } else {
+            config.setAllowedOrigins(Arrays.asList(allowedOrigins));
+        }
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
         config.setAllowCredentials(true);
